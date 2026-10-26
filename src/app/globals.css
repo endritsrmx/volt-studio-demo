@@ -1,0 +1,550 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────── Base ─────────────────────────── */
+:root {
+  --font-sans: "Space Grotesk";
+  --font-mono: "IBM Plex Mono";
+  --nav-h: 74px;
+  --gutter: max(16px, 7vw);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+html {
+  background: rgb(var(--c-bg));
+  color: rgb(var(--c-fg));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-sans), Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  background: rgb(var(--c-bg));
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgb(var(--c-accent));
+  color: rgb(var(--c-accent-ink));
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img,
+canvas,
+video {
+  display: block;
+}
+:focus-visible {
+  outline: 2px solid rgb(var(--c-accent));
+  outline-offset: 3px;
+}
+
+/* ─────────────────────────── Typography ─────────────────────────── */
+@layer components {
+  .title-xl {
+    font-size: clamp(38px, 3.9vw, 56px);
+    line-height: 1.2;
+    font-weight: 400;
+    letter-spacing: -0.005em;
+  }
+  .title-l {
+    font-size: clamp(32px, 3.34vw, 48px);
+    line-height: 1.2;
+    font-weight: 400;
+  }
+  .title-m {
+    font-size: clamp(24px, 2.23vw, 32px);
+    line-height: 1.2;
+    font-weight: 400;
+  }
+  .title-mono {
+    font-family: var(--font-mono), monospace;
+    font-weight: 300;
+    font-size: clamp(15px, 1.25vw, 18px);
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: rgb(var(--c-accent));
+  }
+  .p-hero {
+    font-size: 16px;
+    line-height: 1.75;
+    font-weight: 300;
+  }
+  .p-body {
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: 300;
+  }
+  .p-small {
+    font-size: 14px;
+    line-height: 1.75;
+    font-weight: 300;
+  }
+  .eyebrow {
+    font-family: var(--font-mono), monospace;
+    font-size: 10px;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: rgb(var(--c-accent));
+  }
+
+  /* glass pill tag  */
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 100px;
+    font-family: var(--font-mono), monospace;
+    font-size: 12px;
+    line-height: 14px;
+    color: rgb(var(--c-accent));
+    background: rgb(var(--c-panel) / 0.1);
+    backdrop-filter: blur(74px);
+    -webkit-backdrop-filter: blur(74px);
+    white-space: nowrap;
+  }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 100px;
+    font-family: var(--font-mono), monospace;
+    font-size: 10px;
+    line-height: 14px;
+    text-transform: uppercase;
+    color: rgb(var(--c-accent));
+    background: rgb(var(--c-panel) / 0.1);
+  }
+
+  .glass {
+    background: rgb(var(--c-panel) / 0.1);
+    backdrop-filter: blur(74px);
+    -webkit-backdrop-filter: blur(74px);
+  }
+
+  .container-big {
+    width: 100%;
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+  }
+  .container-narrow {
+    width: 100%;
+    max-width: calc(940px + 32px);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .section {
+    position: relative;
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+  @media (max-width: 767px) {
+    .section {
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+  }
+
+  /* card with hairline border */
+  .card-line {
+    border: 0.5px solid rgb(var(--c-fg) / 0.5);
+    border-radius: 14px;
+  }
+}
+
+/* ─────────────────────────── Buttons ─────────────────────────── */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  padding: 0 32px;
+  border-radius: 100px;
+  font-size: 14px;
+  line-height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  isolation: isolate;
+  cursor: pointer;
+  transition: transform 0.5s var(--ease-out-quart);
+}
+.btn-primary {
+  background: rgb(var(--c-accent));
+  color: rgb(var(--c-accent-ink));
+}
+.btn-secondary {
+  background: rgb(var(--c-panel) / 0.1);
+  color: rgb(var(--c-fg));
+  backdrop-filter: blur(74px);
+  -webkit-backdrop-filter: blur(74px);
+}
+.btn-dark {
+  background: rgb(var(--c-bg));
+  color: rgb(var(--c-accent));
+}
+.btn-sm {
+  height: 40px;
+  padding: 0 20px;
+  font-size: 12px;
+}
+/* expanding fill circle that follows the hover */
+.btn .btn-fill {
+  position: absolute;
+  left: var(--fx, 50%);
+  top: var(--fy, 50%);
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  transition: width 0.5s var(--ease-out-quart), padding-bottom 0.5s var(--ease-out-quart);
+}
+.btn-primary .btn-fill {
+  background: rgb(255 255 255 / 0.55);
+}
+.btn-secondary .btn-fill,
+.btn-dark .btn-fill {
+  background: rgb(var(--c-panel) / 0.12);
+}
+.btn:hover .btn-fill {
+  width: 260%;
+  height: 0;
+  padding-bottom: 260%;
+}
+/* rolling label */
+.roll {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+.roll > span {
+  display: block;
+  transition: transform 0.5s var(--ease-out-expo);
+}
+.roll > span + span {
+  position: absolute;
+  inset: 0;
+  transform: translateY(100%);
+}
+.roll-host:hover .roll > span:first-child {
+  transform: translateY(-100%);
+}
+.roll-host:hover .roll > span + span {
+  transform: translateY(0);
+}
+
+/* round icon button */
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  transition: transform 0.3s ease-out, background-color 0.3s ease-out;
+}
+.icon-btn:hover {
+  transform: scale(1.12);
+}
+
+/* inline text link with underline sweep */
+.link-sweep {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 100% 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.5s var(--ease-out-expo);
+}
+.link-sweep:hover {
+  background-size: 100% 1px;
+  background-position: 0% 100%;
+}
+
+/* ─────────────────────────── Orbit border ─────────────────────────── */
+.orbit {
+  position: relative;
+}
+.orbit::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--angle),
+    transparent 0%,
+    transparent 40%,
+    rgb(var(--c-accent)) 50%,
+    rgb(var(--c-accent)) 60%,
+    transparent 65%,
+    transparent 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box exclude, linear-gradient(#fff 0 0);
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+  animation: orbit 2.5s linear infinite;
+}
+.orbit:hover::before,
+.orbit.is-active::before {
+  opacity: 1;
+}
+@keyframes orbit {
+  to {
+    --angle: 360deg;
+  }
+}
+
+/* ─────────────────────────── Marquee ─────────────────────────── */
+.marquee {
+  display: flex;
+  overflow: hidden;
+  column-gap: 80px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+.marquee-track {
+  display: flex;
+  flex: 0 0 auto;
+  min-width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  column-gap: 80px;
+  animation: marquee 20s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+.marquee-reverse .marquee-track {
+  animation-direction: reverse;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - 80px));
+  }
+}
+
+/* ─────────────────────────── Reveal (unblur) initial states ─────────────────────────── */
+html.js [data-reveal] {
+  opacity: 0;
+  filter: blur(20px);
+}
+html.js [data-reveal="fade"] {
+  filter: none;
+}
+html.js [data-reveal="up"] {
+  filter: none;
+  transform: translateY(32px);
+}
+html.js [data-reveal][data-revealed] {
+  opacity: 1;
+  filter: none;
+  transform: none;
+}
+
+/* ─────────────────────────── Growth chart ─────────────────────────── */
+.growth-line {
+  fill: none;
+  stroke: rgb(var(--c-accent));
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+.is-visible .growth-line {
+  animation: growth-draw 1.6s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+.growth-dot {
+  fill: rgb(var(--c-accent));
+  opacity: 0;
+  transform: scale(0);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.is-visible .growth-dot {
+  animation: growth-pop 0.45s var(--ease-spring) forwards;
+}
+.growth-label {
+  position: absolute;
+  transform: translate(-50%, 12px);
+  padding: 8px 16px;
+  border-radius: 100px;
+  background: rgb(var(--c-panel) / 0.1);
+  color: rgb(var(--c-accent));
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  line-height: 1.2;
+  white-space: nowrap;
+  opacity: 0;
+}
+.is-visible .growth-label {
+  animation: growth-label-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes growth-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes growth-pop {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes growth-label-in {
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* ─────────────────────────── Ticker ─────────────────────────── */
+.ticker {
+  display: inline-flex;
+  align-items: baseline;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+.ticker-digit {
+  display: inline-block;
+  height: 1em;
+  overflow: hidden;
+}
+.ticker-strip {
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+  transition: transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ticker-strip > span {
+  height: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─────────────────────────── Grid paper bg ─────────────────────────── */
+.grid-paper {
+  background-image: linear-gradient(rgb(var(--c-fg) / 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--c-fg) / 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* ─────────────────────────── Art cards (approach) ─────────────────────────── */
+.art-svg * {
+  vector-effect: non-scaling-stroke;
+}
+.art-spin {
+  transform-origin: 50% 50%;
+  transform-box: fill-box;
+  animation: art-spin 14s linear infinite;
+  animation-play-state: paused;
+}
+.art-pulse {
+  transform-origin: 50% 50%;
+  transform-box: fill-box;
+  animation: art-pulse 2s ease-in-out infinite;
+  animation-play-state: paused;
+}
+.is-hovered .art-spin,
+.is-hovered .art-pulse {
+  animation-play-state: running;
+}
+@keyframes art-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes art-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.88);
+  }
+}
+
+/* ─────────────────────────── Scrollbar ─────────────────────────── */
+@media (pointer: fine) {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgb(var(--c-bg));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--c-fg) / 0.18);
+    border-radius: 8px;
+  }
+}
+
+/* ─────────────────────────── Reduced motion ─────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  html.js [data-reveal] {
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+  .growth-line {
+    stroke-dashoffset: 0;
+  }
+  .growth-dot,
+  .growth-label {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (hover: none) {
+  .pc-btn {
+    opacity: 1 !important;
+    scale: 0.7 !important;
+  }
+}
