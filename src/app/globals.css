@@ -560,3 +560,31 @@ html.js [data-reveal][data-revealed] {
   .seo-demo .seo-line { stroke-dashoffset: 0; transition: none !important; }
   .seo-demo .seo-area, .seo-demo .seo-dot { opacity: 1; transition: none !important; animation: none !important; }
 }
+
+/* ── Intro overlay ── */
+html.intro { overflow: hidden; }
+.intro-overlay { display: none; }
+html.js .intro-overlay {
+  display: flex; position: fixed; inset: 0; z-index: 3000;
+  align-items: center; justify-content: center;
+  background: #0A051E; overflow: hidden;
+  transition: opacity 700ms cubic-bezier(.4,0,.2,1), transform 700ms cubic-bezier(.4,0,.2,1), filter 700ms cubic-bezier(.4,0,.2,1);
+  will-change: opacity, transform, filter;
+}
+html.js .intro-overlay.is-out { opacity: 0; transform: scale(1.04); filter: blur(8px); pointer-events: none; }
+.intro-stage { width: min(100vw, 1280px, calc(100vh * 16 / 9)); aspect-ratio: 16 / 9; }
+@media (orientation: portrait) { .intro-stage { width: 112vw; max-width: 1280px; } }
+.intro-media {
+  display: block; width: 100%; height: 100%; object-fit: contain;
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 60%, transparent 100%);
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 60%, transparent 100%);
+}
+.intro-still { animation: intro-still-in 400ms ease-out both; }
+@keyframes intro-still-in { from { opacity: 0; } to { opacity: 1; } }
+.intro-skip {
+  position: absolute; right: 1.25rem; bottom: calc(1.25rem + env(safe-area-inset-bottom));
+  font-size: .8rem; letter-spacing: .04em; color: rgb(170 162 205);
+  padding: .5rem .9rem; border-radius: 999px; border: 1px solid rgb(255 255 255 / .12);
+  background: rgb(255 255 255 / .04); transition: color .2s, border-color .2s;
+}
+.intro-skip:hover, .intro-skip:focus-visible { color: #fff; border-color: rgb(39 218 242 / .6); }

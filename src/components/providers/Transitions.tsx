@@ -85,7 +85,10 @@ export default function Transitions() {
     }
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const ctx = gsap.context(() => {
+    let ctx: gsap.Context | null = null;
+    let t = 0;
+    const start = () => {
+    ctx = gsap.context(() => {
       const els = gsap.utils.toArray<HTMLElement>("[data-reveal]");
       els.forEach((el) => {
         // On small screens, show "up" blocks immediately (avoids empty gaps while scrolling on phones)
@@ -113,10 +116,17 @@ export default function Transitions() {
         });
       });
     });
-    const t = window.setTimeout(() => ScrollTrigger.refresh(), 300);
+    t = window.setTimeout(() => ScrollTrigger.refresh(), 300);
+    };
+    // Wait for the intro overlay (if any) before revealing the hero
+    const w = window as unknown as { __introDone?: boolean };
+    const html = document.documentElement;
+    if (w.__introDone || !html.classList.contains("intro")) start();
+    else window.addEventListener("intro:done", start, { once: true });
     return () => {
+      window.removeEventListener("intro:done", start);
       window.clearTimeout(t);
-      ctx.revert();
+      ctx?.revert();
     };
   }, [pathname]);
 

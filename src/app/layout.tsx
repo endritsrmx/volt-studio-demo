@@ -10,6 +10,8 @@ import site from "@/config/site";
 import { UIProvider } from "@/components/providers/UIProvider";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import Transitions from "@/components/providers/Transitions";
+import { INTRO_ENABLED } from "@/config/site";
+import IntroOverlay from "@/components/site/IntroOverlay";
 import { LangProvider } from "@/i18n/LangProvider";
 import Header from "@/components/site/Header";
 import Footer from "@/components/site/Footer";
@@ -78,7 +80,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="de-CH" style={themeVars} suppressHydrationWarning>
       <head>
         {/* mark JS early so reveal initial states apply without a flash */}
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        <script dangerouslySetInnerHTML={{ __html: INTRO_ENABLED
+              ? "(function(){var h=document.documentElement;h.classList.add('js','intro');setTimeout(function(){if(!window.__introDone){window.__introDone=true;h.classList.remove('intro');window.dispatchEvent(new Event('intro:done'));}},9000)})()"
+              : "document.documentElement.classList.add('js')" }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
       <body>
@@ -89,6 +93,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <main id="main">{children}</main>
               <Footer />
               <Transitions />
+              {INTRO_ENABLED && <IntroOverlay />}
             </SmoothScroll>
           </LangProvider>
         </UIProvider>

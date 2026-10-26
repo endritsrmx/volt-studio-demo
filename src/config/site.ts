@@ -1,5 +1,10 @@
 export const BP = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
+/** Intro animation variant (1 = classic, 2 = pixel-jump, 3 = pixel-jump + loading bar).
+ *  Files expected in /public/intro/intro-{n}.mp4, intro-{n}.webm, intro-{n}-final.png */
+export const INTRO_VARIANT: 1 | 2 | 3 = 3;
+export const INTRO_ENABLED = true;
+
 /** Central brand + contact config for endrIT Solutions. Texts live in src/i18n/dict.ts */
 const site = {
   name: "endrIT Solutions",
