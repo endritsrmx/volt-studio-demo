@@ -552,12 +552,16 @@ html.js [data-reveal][data-revealed] {
 /* ── SEO demo card (illustrative) ── */
 .seo-demo .seo-line { stroke-dasharray: 1; stroke-dashoffset: 1; }
 .seo-demo .seo-area, .seo-demo .seo-dot { opacity: 0; }
+.seo-demo .seo-tile, .seo-demo .seo-chip { opacity: 0; transform: translateY(10px); }
+.seo-demo.is-on .seo-tile, .seo-demo.is-on .seo-chip { opacity: 1; transform: none; transition: opacity .6s ease, transform .6s cubic-bezier(.25,1,.5,1); }
+.seo-demo.is-on .seo-tile:nth-child(2) { transition-delay: .1s; } .seo-demo.is-on .seo-tile:nth-child(3) { transition-delay: .2s; } .seo-demo.is-on .seo-tile:nth-child(4) { transition-delay: .3s; }
 .seo-demo.is-on .seo-line { transition: stroke-dashoffset 1.8s cubic-bezier(0.25, 1, 0.5, 1); stroke-dashoffset: 0; }
 .seo-demo.is-on .seo-area { transition: opacity 1s ease 0.8s; opacity: 1; }
 .seo-demo.is-on .seo-dot { transition: opacity 0.4s ease 1.6s; opacity: 1; animation: seo-pulse 2s ease-in-out 2s infinite; transform-box: fill-box; transform-origin: center; }
 @keyframes seo-pulse { 50% { transform: scale(1.6); opacity: 0.6; } }
 @media (prefers-reduced-motion: reduce) {
   .seo-demo .seo-line { stroke-dashoffset: 0; transition: none !important; }
+  .seo-demo .seo-tile, .seo-demo .seo-chip { opacity: 1 !important; transform: none !important; transition: none !important; }
   .seo-demo .seo-area, .seo-demo .seo-dot { opacity: 1; transition: none !important; animation: none !important; }
 }
 
