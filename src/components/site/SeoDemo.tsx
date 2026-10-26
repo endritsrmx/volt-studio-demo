@@ -96,7 +96,7 @@ export default function SeoDemo() {
           </defs>
           {[20, 40, 60].map((y) => <line key={y} x1="0" x2="200" y1={y} y2={y} stroke="rgb(255 255 255 / .06)" vectorEffect="non-scaling-stroke" />)}
           <path d={`${LINE} L200 80 L0 80 Z`} fill="url(#seoFill)" className="seo-area" />
-          <path d={LINE} fill="none" stroke="url(#seoStroke)" strokeWidth="2.5" strokeLinecap="round" pathLength={1} vectorEffect="non-scaling-stroke" className="seo-line" />
+          <path d={LINE} fill="none" stroke="url(#seoStroke)" strokeWidth="2" strokeLinecap="round" pathLength={1} className="seo-line" />
         </svg>
         <div className="mt-1 flex justify-between font-mono text-[10px] text-fg/40">
           {d.months.map((m) => <span key={m}>{m}</span>)}
