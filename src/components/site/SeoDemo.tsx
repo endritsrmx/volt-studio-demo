@@ -88,7 +88,7 @@ export default function SeoDemo() {
             <span className="font-mono text-[10px] text-fg/40">{d.keyword}</span>
           </div>
           {/* pagespeed ring */}
-          <div className="flex items-center gap-3 rounded-xl bg-panel/[0.04] p-4">
+          <div className="flex flex-col items-start gap-2 rounded-xl bg-panel/[0.04] p-4 sm:flex-row sm:items-center sm:gap-3">
             <svg viewBox="0 0 52 52" width="52" height="52" className="-rotate-90 shrink-0" aria-hidden>
               <circle cx="26" cy="26" r="22" fill="none" stroke="rgb(255 255 255 / .08)" strokeWidth="5" />
               <circle cx="26" cy="26" r="22" fill="none" stroke="#27DAF2" strokeWidth="5" strokeLinecap="round"
