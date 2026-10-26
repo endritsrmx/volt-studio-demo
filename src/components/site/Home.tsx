@@ -6,6 +6,7 @@ import site from "@/config/site";
 import Button from "@/components/ui/Button";
 import { useLang } from "@/i18n/LangProvider";
 import { useReducedMotion } from "@/lib/hooks";
+import SeoDemo from "./SeoDemo";
 
 const GrainGradient = dynamic(() => import("@/components/gl/GrainGradient"), { ssr: false });
 const HeroToggle3D = dynamic(() => import("@/components/gl/HeroToggle3D"), { ssr: false });
@@ -46,7 +47,7 @@ export default function Home() {
       </section>
 
       {/* SERVICES */}
-      <section id="services" className="container-big scroll-mt-[var(--nav-h)] py-12">
+      <section id="services" className="container-big scroll-mt-[var(--nav-h)] pb-6 pt-10 md:py-12">
         <div className="eyebrow mb-2">{t.services.eyebrow}</div>
         <h2 className="title-l mb-8">{t.services.title}</h2>
         <div className="grid gap-4 md:grid-cols-3">
@@ -65,8 +66,13 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Illustrative SEO / traffic card */}
+      <section className="container-big pb-4 md:pb-6">
+        <SeoDemo />
+      </section>
+
       {/* ABOUT + CONTACT side by side */}
-      <section className="container-big grid gap-10 py-12 md:grid-cols-2">
+      <section className="container-big grid gap-10 pb-10 pt-6 md:grid-cols-2 md:py-12">
         <div id="about" className="scroll-mt-[calc(var(--nav-h)+24px)]" data-reveal="up">
           <div className="eyebrow mb-2">{t.about.eyebrow}</div>
           <h2 className="title-l mb-4">{t.about.title}</h2>

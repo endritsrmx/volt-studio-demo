@@ -88,7 +88,8 @@ export default function Transitions() {
     const ctx = gsap.context(() => {
       const els = gsap.utils.toArray<HTMLElement>("[data-reveal]");
       els.forEach((el) => {
-        if (reduced) {
+        // On small screens, show "up" blocks immediately (avoids empty gaps while scrolling on phones)
+        if (reduced || (el.dataset.reveal === "up" && window.innerWidth < 768)) {
           el.dataset.revealed = "1";
           return;
         }
@@ -108,7 +109,7 @@ export default function Transitions() {
             el.dataset.revealed = "1";
             gsap.set(el, { clearProps: "filter,transform,opacity" });
           },
-          scrollTrigger: { trigger: el, start: "top 92%", once: true },
+          scrollTrigger: { trigger: el, start: "top 100%", once: true },
         });
       });
     });
