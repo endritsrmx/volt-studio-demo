@@ -10,9 +10,6 @@ const site = {
     email: "esermaxhaj@icloud.com",
     phone: "+41 79 788 54 21",
     phoneHref: "+41797885421",
-    postalCode: "5033",
-    city: "Buchs AG",
-    region: "AG",
     country: "CH",
   },
   /** Colours derived from the logo: brand purple #3E02B2, pixel cyan #27DAF2 (RGB triplets) */
@@ -28,13 +25,13 @@ const site = {
   },
   motion: { smoothScroll: true, pageTransitions: true },
   seo: {
-    title: "endrIT Solutions – IT-Dienstleistungen, Webdesign & Social Media | Buchs AG",
+    title: "endrIT Solutions – IT-Dienstleistungen, Webdesign & Social Media | Schweiz",
     titleTemplate: "%s | endrIT Solutions",
     description:
-      "endrIT Solutions von Endrit Sermaxhaj (BSc Informatik) in Buchs AG: IT-Support, Netzwerke, Einrichtung und Wartung, Webdesign und Website-Redesign inkl. 1 Jahr Wartung sowie Social-Media-Betreuung für Instagram und TikTok.",
+      "endrIT Solutions von Endrit Sermaxhaj in der Schweiz: IT-Support, Netzwerke, Einrichtung und Wartung, Webdesign und Website-Redesign inkl. 1 Jahr Wartung sowie Social-Media-Betreuung für Instagram und TikTok.",
     keywords: [
-      "IT-Dienstleistungen", "IT-Support", "Informatiker Buchs AG", "Netzwerk", "Webdesign", "Website-Redesign",
-      "Social-Media-Betreuung", "Instagram", "TikTok", "Aargau", "Aarau", "endrIT Solutions",
+      "IT-Dienstleistungen", "IT-Support", "Informatiker Schweiz", "Netzwerk", "Webdesign", "Website-Redesign",
+      "Social-Media-Betreuung", "Instagram", "TikTok", "Schweiz", "endrIT Solutions",
     ],
     ogImage: "./og.png", // relative to metadataBase (which already contains the basePath),
     locale: "de_CH",

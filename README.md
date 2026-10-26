@@ -1,6 +1,6 @@
 # endrIT Solutions – Website
 
-One-page site for **endrIT Solutions** (Endrit Sermaxhaj, 5033 Buchs AG): IT-Dienstleistungen, Webdesign & Website-Redesign, Social-Media-Betreuung.
+One-page site for **endrIT Solutions** (Endrit Sermaxhaj, Schweiz): IT-Dienstleistungen, Webdesign & Website-Redesign, Social-Media-Betreuung.
 
 - Next.js static export (`output: "export"`), deployed to GitHub Pages via `.github/workflows/pages.yml`
 - Texts (DE-CH / EN): `src/i18n/dict.ts` · Brand/contact/colours: `src/config/site.ts`

@@ -6,9 +6,9 @@ export const dict = {
     skip: "Zum Inhalt springen",
     nav: { services: "Leistungen", about: "Über mich", contact: "Kontakt" },
     hero: {
-      tag: "Informatiker · Buchs AG",
+      tag: "Informatiker · Schweiz",
       title: "IT, die einfach funktioniert.",
-      body: "Ich bin Endrit Sermaxhaj, Informatiker mit BSc in Computer Science. Mit endrIT Solutions unterstütze ich Privatpersonen und KMU – von der IT-Infrastruktur über die eigene Website bis zum Social-Media-Auftritt.",
+      body: "Ich bin Endrit Sermaxhaj, Informatiker. Mit endrIT Solutions unterstütze ich Privatpersonen und KMU – von der IT-Infrastruktur über die eigene Website bis zum Social-Media-Auftritt.",
       cta: "Anfrage senden",
       cta2: "Leistungen ansehen",
     },
@@ -36,8 +36,8 @@ export const dict = {
     about: {
       eyebrow: "Über mich",
       title: "Persönlich, direkt und lösungsorientiert.",
-      body: "Als Informatiker (BSc Computer Science) verbinde ich technisches Fachwissen mit einem Gespür für Design. Sie haben bei mir eine feste Ansprechperson – verständlich erklärt, ohne Fachchinesisch.",
-      facts: ["BSc Computer Science", "Sitz in 5033 Buchs AG", "Deutsch & Englisch"],
+      body: "Als Informatiker verbinde ich technisches Fachwissen mit einem Gespür für Design. Sie haben bei mir eine feste Ansprechperson – verständlich erklärt, ohne Fachchinesisch.",
+      facts: ["Sitz in der Schweiz", "Deutsch & Englisch"],
     },
     contact: {
       eyebrow: "Kontakt",
@@ -54,13 +54,14 @@ export const dict = {
       subject: "Anfrage über endrit-solutions",
       phone: "Telefon",
       location: "Standort",
+      country: "Schweiz",
     },
     footer: { rights: "Alle Rechte vorbehalten.", privacy: "Datenschutz & Impressum" },
     privacy: {
       title: "Datenschutz & Impressum",
       back: "Zurück zur Startseite",
       sections: [
-        { h: "Verantwortlich", p: "endrIT Solutions, Endrit Sermaxhaj, 5033 Buchs AG, Schweiz. E-Mail: esermaxhaj@icloud.com, Telefon: +41 79 788 54 21." },
+        { h: "Verantwortlich", p: "endrIT Solutions, Endrit Sermaxhaj, Schweiz. E-Mail: esermaxhaj@icloud.com, Telefon: +41 79 788 54 21." },
         { h: "Datenbearbeitung", p: "Diese Website wird statisch über GitHub Pages ausgeliefert. Es werden keine Cookies für Tracking oder Werbung gesetzt. Der Hoster kann technisch notwendige Server-Logdaten (z. B. IP-Adresse, Zeitpunkt) bearbeiten." },
         { h: "Kontaktaufnahme", p: "Das Kontaktformular öffnet lediglich Ihr eigenes E-Mail-Programm. Daten, die Sie mir per E-Mail oder Telefon senden, verwende ich ausschliesslich zur Bearbeitung Ihrer Anfrage." },
         { h: "Ihre Rechte", p: "Sie können gemäss dem Schweizer Datenschutzgesetz (DSG) jederzeit Auskunft, Berichtigung oder Löschung Ihrer Daten verlangen. Kontaktieren Sie mich dazu per E-Mail." },
@@ -72,9 +73,9 @@ export const dict = {
     skip: "Skip to content",
     nav: { services: "Services", about: "About", contact: "Contact" },
     hero: {
-      tag: "IT specialist · Buchs AG",
+      tag: "IT specialist · Switzerland",
       title: "IT that simply works.",
-      body: "I'm Endrit Sermaxhaj, an IT specialist with a BSc in Computer Science. With endrIT Solutions I support individuals and small businesses – from IT infrastructure to your website and social media presence.",
+      body: "I'm Endrit Sermaxhaj, an IT specialist. With endrIT Solutions I support individuals and small businesses – from IT infrastructure to your website and social media presence.",
       cta: "Get in touch",
       cta2: "View services",
     },
@@ -102,8 +103,8 @@ export const dict = {
     about: {
       eyebrow: "About",
       title: "Personal, direct and solution-oriented.",
-      body: "As an IT specialist (BSc Computer Science) I combine technical know-how with a feel for design. You get one fixed point of contact – explained clearly, without jargon.",
-      facts: ["BSc Computer Science", "Based in 5033 Buchs AG", "German & English"],
+      body: "As an IT specialist I combine technical know-how with a feel for design. You get one fixed point of contact – explained clearly, without jargon.",
+      facts: ["Based in Switzerland", "German & English"],
     },
     contact: {
       eyebrow: "Contact",
@@ -120,13 +121,14 @@ export const dict = {
       subject: "Enquiry via endrit-solutions",
       phone: "Phone",
       location: "Location",
+      country: "Switzerland",
     },
     footer: { rights: "All rights reserved.", privacy: "Privacy & legal notice" },
     privacy: {
       title: "Privacy & legal notice",
       back: "Back to home",
       sections: [
-        { h: "Responsible", p: "endrIT Solutions, Endrit Sermaxhaj, 5033 Buchs AG, Switzerland. Email: esermaxhaj@icloud.com, phone: +41 79 788 54 21." },
+        { h: "Responsible", p: "endrIT Solutions, Endrit Sermaxhaj, Switzerland. Email: esermaxhaj@icloud.com, phone: +41 79 788 54 21." },
         { h: "Data processing", p: "This website is served statically via GitHub Pages. No tracking or advertising cookies are used. The host may process technically required server logs (e.g. IP address, time)." },
         { h: "Contact", p: "The contact form only opens your own email app. Data you send me by email or phone is used solely to handle your enquiry." },
         { h: "Your rights", p: "Under the Swiss Data Protection Act (FADP) you may request access, correction or deletion of your data at any time. Just contact me by email." },

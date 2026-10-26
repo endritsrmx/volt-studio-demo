@@ -77,7 +77,7 @@ export default function Home() {
           <dl className="mt-8 grid gap-3 text-[15px]">
             <div><dt className="eyebrow">{t.contact.email}</dt><dd><a className="link-sweep" href={`mailto:${site.contact.email}`}>{site.contact.email}</a></dd></div>
             <div><dt className="eyebrow">{t.contact.phone}</dt><dd><a className="link-sweep" href={`tel:${site.contact.phoneHref}`}>{site.contact.phone}</a></dd></div>
-            <div><dt className="eyebrow">{t.contact.location}</dt><dd>{site.contact.postalCode} {site.contact.city}, Schweiz</dd></div>
+            <div><dt className="eyebrow">{t.contact.location}</dt><dd>{t.contact.country}</dd></div>
           </dl>
         </div>
         <div id="contact" className="scroll-mt-[calc(var(--nav-h)+24px)]" data-reveal="up" data-delay="0.15">

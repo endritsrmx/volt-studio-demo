@@ -66,9 +66,9 @@ const jsonLd = {
   description: site.seo.description,
   email: site.contact.email,
   telephone: site.contact.phone,
-  founder: { "@type": "Person", name: site.owner, jobTitle: "Informatiker (BSc Computer Science)" },
-  address: { "@type": "PostalAddress", postalCode: site.contact.postalCode, addressLocality: "Buchs", addressRegion: site.contact.region, addressCountry: site.contact.country },
-  areaServed: [{ "@type": "AdministrativeArea", name: "Aargau" }, { "@type": "Country", name: "Schweiz" }],
+  founder: { "@type": "Person", name: site.owner, jobTitle: "Informatiker" },
+  address: { "@type": "PostalAddress", addressCountry: site.contact.country },
+  areaServed: [{ "@type": "Country", name: "Schweiz" }],
   knowsLanguage: ["de-CH", "en"],
   makesOffer: ["IT-Dienstleistungen", "Webdesign & Website-Redesign", "Social-Media-Betreuung"].map((n) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: n } })),
 };
