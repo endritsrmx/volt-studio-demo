@@ -10,12 +10,10 @@ import site from "@/config/site";
 import { UIProvider } from "@/components/providers/UIProvider";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import Transitions from "@/components/providers/Transitions";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import MenuModal from "@/components/layout/MenuModal";
-import ContactModal from "@/components/layout/ContactModal";
-import PageLoader from "@/components/layout/PageLoader";
-import Assistant from "@/components/layout/Assistant";
+import { LangProvider } from "@/i18n/LangProvider";
+import Header from "@/components/site/Header";
+import Footer from "@/components/site/Footer";
+import { BP } from "@/config/site";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
@@ -25,20 +23,26 @@ export const metadata: Metadata = {
   description: site.seo.description,
   keywords: site.seo.keywords,
   applicationName: site.name,
+  authors: [{ name: site.owner }],
+  alternates: { canonical: "./" },
   openGraph: {
     type: "website",
     siteName: site.name,
     title: site.seo.title,
     description: site.seo.description,
     locale: site.seo.locale,
-    images: [{ url: site.seo.ogImage, width: 1200, height: 630 }],
+    url: "./",
+    images: [{ url: site.seo.ogImage, width: 1200, height: 630, alt: site.name }],
   },
-  twitter: { card: "summary_large_image", creator: site.seo.twitter || undefined },
-  icons: { icon: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/favicon.svg` },
+  twitter: { card: "summary_large_image", title: site.seo.title, description: site.seo.description, images: [site.seo.ogImage] },
+  icons: {
+    icon: [{ url: `${BP}/favicon.ico`, sizes: "any" }, { url: `${BP}/favicon.svg`, type: "image/svg+xml" }],
+    apple: `${BP}/apple-touch-icon.png`,
+  },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
+  themeColor: "#0A051E",
   width: "device-width",
   initialScale: 1,
 };
@@ -54,41 +58,39 @@ const themeVars = {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "ProfessionalService",
   name: site.name,
   url: siteUrl,
+  logo: `${siteUrl}/brand/logo.png`,
+  image: `${siteUrl}/og.png`,
+  description: site.seo.description,
   email: site.contact.email,
-  address: site.contact.address,
-  sameAs: site.socials.filter((s) => s.href.startsWith("http")).map((s) => s.href),
+  telephone: site.contact.phone,
+  founder: { "@type": "Person", name: site.owner, jobTitle: "Informatiker (BSc Computer Science)" },
+  address: { "@type": "PostalAddress", postalCode: site.contact.postalCode, addressLocality: "Buchs", addressRegion: site.contact.region, addressCountry: site.contact.country },
+  areaServed: [{ "@type": "AdministrativeArea", name: "Aargau" }, { "@type": "Country", name: "Schweiz" }],
+  knowsLanguage: ["de-CH", "en"],
+  makesOffer: ["IT-Dienstleistungen", "Webdesign & Website-Redesign", "Social-Media-Betreuung"].map((n) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: n } })),
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" style={themeVars} suppressHydrationWarning>
+    <html lang="de-CH" style={themeVars} suppressHydrationWarning>
       <head>
         {/* mark JS early so reveal initial states apply without a flash */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
       <body>
-        <a
-          href="#main"
-          className="fixed left-4 top-4 z-[3000] -translate-y-24 rounded-pill bg-accent px-4 py-2 text-black transition-transform focus:translate-y-0"
-          data-no-transition
-        >
-          Skip to content
-        </a>
         <UIProvider>
-          <SmoothScroll>
-            <PageLoader />
-            <Navbar />
-            <main id="main">{children}</main>
-            <Footer />
-            <MenuModal />
-            <ContactModal />
-            <Assistant />
-            <Transitions />
-          </SmoothScroll>
+          <LangProvider>
+            <SmoothScroll>
+              <Header />
+              <main id="main">{children}</main>
+              <Footer />
+              <Transitions />
+            </SmoothScroll>
+          </LangProvider>
         </UIProvider>
       </body>
     </html>

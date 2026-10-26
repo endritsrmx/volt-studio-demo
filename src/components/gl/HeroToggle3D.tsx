@@ -114,13 +114,13 @@ export default function HeroToggle3D({ reduced = false }: { reduced?: boolean })
     >
       <ambientLight intensity={0.25} />
       <directionalLight position={[3, 4, 5]} intensity={1.4} />
-      <directionalLight position={[-4, -2, 2]} intensity={0.4} color="#ccff00" />
+      <directionalLight position={[-4, -2, 2]} intensity={0.4} color="#27DAF2" />
       <Switch reduced={reduced} />
       {/* local lightformer environment – no network HDR required */}
       <Environment resolution={128}>
         <Lightformer intensity={2.2} position={[0, 4, 3]} scale={[8, 1.4, 1]} />
         <Lightformer intensity={1.2} position={[-5, 0, 2]} rotation-y={Math.PI / 2} scale={[6, 2, 1]} />
-        <Lightformer intensity={0.6} color="#ccff00" position={[4, -2, 2]} rotation-y={-Math.PI / 2} scale={[4, 2, 1]} />
+        <Lightformer intensity={0.6} color="#27DAF2" position={[4, -2, 2]} rotation-y={-Math.PI / 2} scale={[4, 2, 1]} />
       </Environment>
     </Canvas>
     </Safe3D>
